@@ -14,7 +14,6 @@
                     <span class="block sm:inline">{{ session('success') }}</span>
                 </div>
             @endif
-            {{-- condition if tasks not found --}}
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
 
@@ -185,7 +184,7 @@
                 var card = document.createElement('div');
                 card.classList.add('bg-white', 'mb-2', 'p-2');
                 card.innerHTML = `
-                    <div class="card mb-4">
+                    <div class="card mb-4" id="task-${e.task.id}">
                         <div class="card-header">
                             <h3 class="font-bold">${e.task.title}</h3>
                         </div>

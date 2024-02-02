@@ -18,6 +18,7 @@ class TaskCreated implements ShouldBroadcast
      */
     public function __construct(private Task $task)
     {
+        $this->task->created_at = $this->task->created_at->diffForHumans();
     }
 
     /**
@@ -37,7 +38,15 @@ class TaskCreated implements ShouldBroadcast
     public function broadcastWith(): array
     {
         return [
-            'task' => $this->task,
+            'task' =>[
+                'id' => $this->task->id,
+                'title' => $this->task->title,
+                'desc'   => $this->task->desc,
+                'created_at' => $this->task->created_at->diffForHumans(),
+                'status_label' => $this->task->status_label,
+                'status'    => $this->task->status,
+                'translated_status' => $this->task->translated_status,
+            ],
             'message' => 'New task created'
         ];
     }
