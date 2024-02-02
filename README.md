@@ -1,8 +1,8 @@
 # Project Title
-
+TODOLIST  
 ## Description
 
-A brief description of what this project does and who it's for.
+Todo list app to manage your tasks  
 
 ## Installation
 
