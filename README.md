@@ -11,4 +11,6 @@ Instructions on how to install the project or setup the development environment.
 ```bash
 git clone <repository-link>
 cd <repository-directory>
+composer install
 npm install
+
