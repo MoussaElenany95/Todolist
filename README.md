@@ -18,7 +18,7 @@ npm run dev
 
 ```
 # Pusher
-Add your own pusher keys in env file
+Add your own pusher keys in env file  
 PUSHER_APP_ID=  
 PUSHER_APP_KEY=  
 PUSHER_APP_SECRET=  
