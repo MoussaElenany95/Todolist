@@ -15,7 +15,7 @@
                         @csrf
                         <div class="mb-4">
                             <label for="title" >Title</label>
-                            <input type="text" name="title" id="title" placeholder="Title" class="w-full p-2 rounded-lg @error('title') border-red-500 @enderror" value="{{ old('title') }}">
+                            <input type="text" name="title" id="title" placeholder="Title" class="w-full p-2 rounded-lg @error('title') border-red-500 @enderror dark:bg-gray-800" value="{{ old('title') }}">
                             @error('title')
                                 <div class="text-red-500 mt-2 text-sm">
                                     {{ $message }}
@@ -24,7 +24,7 @@
                         </div>
                         <div class="mb-4">
                             <label for="description" >Description</label>
-                            <textarea name="desc" id="description" cols="30" rows="4" placeholder="Description" class="w-full p-2 rounded-lg @error('description') border-red-500 @enderror">{{ old('description') }}</textarea>
+                            <textarea name="desc" id="description" cols="30" rows="4" placeholder="Description" class="w-full p-2 rounded-lg @error('description') border-red-500 @enderror dark:bg-gray-800">{{ old('description') }}</textarea>
                             @error('desc')
                                 <div class="text-red-500 mt-2 text-sm">
                                     {{ $message }}
@@ -33,7 +33,7 @@
                         </div>
                         <div class="mb-4">
                             <label for="status" >Status</label>
-                            <select name="status" id="status" class="w-full p-2 rounded-lg @error('status') border-red-500 @enderror">
+                            <select name="status" id="status" class="w-full p-2 rounded-lg @error('status') border-red-500 @enderror dark:bg-gray-800">
                                 @foreach ($statuses as $key => $status)
                                     <option value="{{ $key }}">{{ __($status) }}</option>
                                 @endforeach
