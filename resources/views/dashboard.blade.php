@@ -46,7 +46,7 @@
                             <div class="card-footer flex">
                                 {{-- create button to view modal --}}
                                 <button onclick="openModal({{ $task }})"
-                                    class="text-blue-500 mr-2">View</button>
+                                    class="text-blue-500 mr-2" id="view-btn-{{$task->id}}">View</button>
                                 {{-- create button to view modal --}}
                                 <a href="{{ route('tasks.edit', $task->id) }}" class="text-gray-500 mr-2">Edit</a>
                                 <form id="delete-form-{{ $task->id }}"
@@ -76,7 +76,7 @@
                 <div class="flex justify-between items-center pb-3">
                     <p class="text-2xl font-bold">Task</p>
                     <div class="modal-close cursor-pointer z-50">
-                        <svg onclick="closeModal('modal')" class="fill-current dark:text-gray-100 text-3xl text-red-500"
+                        <svg onclick="closeModal('modal')" class="fill-current text-3xl text-red-500"
                             xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 18 18">
                             <path
                                 d="M6.469 6l-1.78-1.78a1 1 0 1 1 1.414-1.414L7.88 4.586 9.657 2.81a1 1 0 1 1 1.414 1.414L9.88 6l1.78 1.78a1 1 0 1 1-1.414 1.414L8.47 7.414 6.693 9.192a1 1 0 1 1-1.414-1.414L6.47 6z">
@@ -113,7 +113,7 @@
                     <p class="text-2xl font-bold">Delete Task</p>
                     <div class="modal-close cursor-pointer z-50">
                         <svg onclick="closeModal('delete-modal')"
-                            class="fill-current dark:text-gray-100 text-3xl text-red-500"
+                            class="fill-current text-3xl text-red-500"
                             xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 18 18">
                             <path
                                 d="M6.469 6l-1.78-1.78a1 1 0 1 1 1.414-1.414L7.88 4.586 9.657 2.81a1 1 0 1 1 1.414 1.414L9.88 6l1.78 1.78a1 1 0 1 1-1.414 1.414L8.47 7.414 6.693 9.192a1 1 0 1 1-1.414-1.414L6.47 6z">
@@ -147,9 +147,7 @@
             document.getElementById('status').innerHTML = $data.translated_status;
             document.getElementById('status').classList.add($data.status_label);
             var taskDate = new Date($data.created_at);
-
             document.getElementById('created_at').innerHTML = taskDate.toLocaleString();
-
         }
 
         function closeModal(modal) {
@@ -229,6 +227,8 @@
                 document.getElementById('status').innerHTML = e.task.translated_status;
                 document.getElementById('status').classList.remove('pending', 'completed', 'in_progress','cancelled');
                 document.getElementById('status').classList.add(e.task.status_label);
+                let task = JSON.stringify(e.task);
+                document.getElementById('view-btn-'+e.task.id).setAttribute('onclick', `openModal(${task})`);
             }); 
         // listen to tasks event
     </script>
